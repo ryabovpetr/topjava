@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 // TODO add userId
@@ -20,4 +21,8 @@ public interface MealRepository {
 
     // null if meal not found or does not belong to userId
     Collection<Meal> getByDescription(String description, int userId);
+
+    Collection<Meal> getFilteredByDateMeals(LocalDate startDate, LocalDate endDate, int userId);
+
 }
+
