@@ -29,7 +29,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>userServlet</servlet-name>
-        <url-patt0ern>/users</url-patt0ern>
+        <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
     <servlet>
