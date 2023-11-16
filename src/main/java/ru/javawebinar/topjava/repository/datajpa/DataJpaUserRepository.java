@@ -18,6 +18,11 @@ public class DataJpaUserRepository implements UserRepository {
     }
 
     @Override
+    public void activate(boolean status, int id) {
+        crudRepository.activate(status, id);
+    }
+
+    @Override
     public User save(User user) {
         return crudRepository.save(user);
     }

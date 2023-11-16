@@ -41,6 +41,14 @@ public class UserService {
         return checkNotFound(repository.getByEmail(email), "email=" + email);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
+    public void activate(boolean enabled, int id) {
+        Assert.notNull(enabled, "enabled must not be null");
+        User user = get(id);
+        user.setEnabled(enabled);
+        update(user);
+    }
+
     @Cacheable("users")
     public List<User> getAll() {
         return repository.getAll();

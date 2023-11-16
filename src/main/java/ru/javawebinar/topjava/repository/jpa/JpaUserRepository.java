@@ -39,6 +39,14 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
+    public void activate(boolean enabled, int id) {
+        User user = em.find(User.class, id);
+        user.setEnabled(enabled);
+        em.merge(user);
+    }
+
+    @Override
     public User get(int id) {
         return em.find(User.class, id);
     }
