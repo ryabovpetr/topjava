@@ -23,10 +23,15 @@ function updateRow(id) {
     $("#modalTitle").html(i18n["editTitle"]);
     $.get(ctx.ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
-            form.find("input[name='" + key + "']").val(value);
+            form.find("input[name='" + key + "']").val(
+                key === 'dateTime' ? formatDate(value) : value);
         });
         $('#editRow').modal();
     });
+}
+
+function formatDate(date) {
+    return date.replace('T', ' ').substr(0, 16);
 }
 
 function deleteRow(id) {
@@ -91,7 +96,8 @@ function renderDeleteBtn(data, type, row) {
 function failNoty(jqXHR) {
     closeNoty();
     failedNote = new Noty({
-        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"] + ": " + jqXHR.status + (jqXHR.responseJSON ? "<br>" + jqXHR.responseJSON : ""),
+        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"]
+            + ": " + jqXHR.status + (jqXHR.responseJSON ? "<br>" + jqXHR.responseJSON : ""),
         type: "error",
         layout: "bottomRight"
     });
