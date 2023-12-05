@@ -35,8 +35,8 @@ import static ru.javawebinar.topjava.web.user.AbstractUserController.DUPLICATE_E
 @Order(Ordered.HIGHEST_PRECEDENCE + 5)
 public class ExceptionInfoHandler {
 
-    @Autowired
-    private MessageSource messageSource;
+//    @Autowired
+//    private MessageSource messageSource;
     private static final Logger log = LoggerFactory.getLogger(ExceptionInfoHandler.class);
 
     //  http://stackoverflow.com/a/22358422/548473
@@ -49,16 +49,16 @@ public class ExceptionInfoHandler {
     @ResponseStatus(HttpStatus.CONFLICT)  // 409
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ErrorInfo conflict(HttpServletRequest req, DataIntegrityViolationException e) {
-        String rootMsg = ValidationUtil.getRootCause(e).getMessage();
-        if (rootMsg != null) {
-            String lowerCaseMsg = rootMsg.toLowerCase();
-            if (lowerCaseMsg.contains("users_unique_email_idx")) {
-                return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR, messageSource.getMessage(DUPLICATE_EMAIL_ERROR, null, LocaleContextHolder.getLocale()));
-            }
-            if (lowerCaseMsg.contains("meal_unique_user_datetime_idx")) {
-                return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR, messageSource.getMessage(DUPLICATE_DATE_TIME_ERROR, null, LocaleContextHolder.getLocale()));
-            }
-        }
+//        String rootMsg = ValidationUtil.getRootCause(e).getMessage();
+//        if (rootMsg != null) {
+//            String lowerCaseMsg = rootMsg.toLowerCase();
+//            if (lowerCaseMsg.contains("users_unique_email_idx")) {
+//                return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR, messageSource.getMessage(DUPLICATE_EMAIL_ERROR, null, LocaleContextHolder.getLocale()));
+//            }
+//            if (lowerCaseMsg.contains("meal_unique_user_datetime_idx")) {
+//                return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR, messageSource.getMessage(DUPLICATE_DATE_TIME_ERROR, null, LocaleContextHolder.getLocale()));
+//            }
+//        }
         return logAndGetErrorInfo(req, e, true, DATA_ERROR);
 
     }
