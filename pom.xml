@@ -20,6 +20,7 @@
         <spring-data-jpa.version>2.7.13</spring-data-jpa.version>
         <tomcat.version>9.0.65</tomcat.version>
         <jackson.version>2.15.2</jackson.version>
+        <json-path.version>2.8.0</json-path.version>
 
         <!-- Hibernate -->
         <hibernate.version>5.6.15.Final</hibernate.version>
@@ -139,6 +140,13 @@
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${json-path.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Spring -->
