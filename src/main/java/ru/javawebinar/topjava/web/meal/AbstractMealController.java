@@ -18,8 +18,6 @@ import static ru.javawebinar.topjava.util.ValidationUtil.assureIdConsistent;
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 
 public abstract class AbstractMealController {
-
-    public static final String DUPLICATE_DATE_TIME_ERROR = "exception.duplicate_dateTime";
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
